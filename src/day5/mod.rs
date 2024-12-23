@@ -133,10 +133,34 @@ impl Garden {
             .min()
             .unwrap_or(0)
     }
+
+    pub fn build_location_to_seed_range_map(&self) {
+        // start at the location type and work back to seed numbs, building an array of "divergence
+        // points" where things change so they are important
+    }
+}
+
+struct RangeMap {
+    to: u32,
+    from: u32,
+}
+
+struct RangeMapHolder {
+    range: Vec<RangeMap>,
 }
 
 pub fn part1(garden: Garden) {
     println!("Part 1: {:?}", garden.find_smallest_location_numer());
+}
+
+pub fn test() {
+    let mut sum: u64 = 0;
+
+    for i in 0..1000000000 {
+        sum += i
+    }
+
+    println!("sum {}", sum);
 }
 
 pub fn main() {
@@ -144,9 +168,10 @@ pub fn main() {
         let garden = Garden::parse(file);
 
         println!("The garden is parsed");
+        test();
 
-        if let Some(garden) = garden {
-            part1(garden)
-        }
+        // if let Some(garden) = garden {
+        //     part1(garden)
+        // }
     }
 }
